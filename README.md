@@ -11,17 +11,19 @@ DSH 桌面端输入框旁边那颗「技能」按钮，单独做成一个插件�
 - **收藏**：每行右边 ☆ / ★，收藏页里每用一次自动置顶。
 - **图钉**：钉住后点技能不收起面板，可以连着点几个；图钉未激活是灰色描边，激活是蓝色描边。
 - **点一下就插进输入框**：写 `/技能名 ` 到光标处并自动补空格，DSH 会把它渲染成蓝色 chip。不走「复制到剪贴板」这种绕路。
+- **回答下方显示这一轮用到的技能**：每条回答末尾一行小胶囊（如 `/systematic-debugging`），鼠标停上去看中文说明；一轮没用技能就不显示。
 - **中文说明**：内置 84 个常用技能的中文一句话说明；装了新技能没有说明时，面板顶部会出现「N 个技能还没有中文说明」和一个「翻译 N 条」按钮，点一下用你「设置 → 模型」里选的默认模型翻，结果存在 `<dsh home>/skill-zh.json`，以后不再重复翻。
+- **设置页**：设置 → 技能调色板，可以关掉「输入框右侧的胶囊」「回答下方这一轮用到的技能」「翻译提示」，也能开「新技能自动翻译」和清空翻译缓存。
 - **只发公开元数据**：翻译只把技能名和英文描述发给模型，不发对话、不发文件、不记日志。
 
 ## 安装
 
 ```powershell
 # 市场安装（收录后）
-dsh plugin add dsh-skill-picker
+dsh plugin add dsh-skill-palette
 
 # 从 GitHub 装
-dsh plugin add github:AlLHHH/dsh-skill-picker
+dsh plugin add github:AlLHHH/dsh-skill-palette
 ```
 
 插件自己带 `cordis.patch.yml`，装进 profile 后会自动插一行 `skill-picker`，不需要手改配置。装完刷新页面（或在「应用菜单 → 重启应用」）即可。
@@ -31,7 +33,7 @@ dsh plugin add github:AlLHHH/dsh-skill-picker
 1. 看输入框右边有没有「技能」按钮；点开标题是「技能 · N」，N 应该等于你装的技能总数（`~/.dsh/skills/*/SKILL.md` 加上技能包内置的入口）。
 2. **新装技能会不会显示**：随便丢一个新目录进 `C:\Users\AlL\.dsh\skills\`，里面放一个 `SKILL.md`（frontmatter 至少要有 `name` 和 `description`），重新打开面板就应该多一行；面板开着时最多等 60 秒自己刷新。
 3. **翻译能不能用**：新加的技能不在内置中文表里，面板顶部会出现「1 个技能还没有中文说明 / 翻译 1 条」。点它，几秒后那一行变成中文；`~/.dsh/skill-zh.json` 里会多一条记录，重启后依然有效。
-   - 翻译走宿主路由 `POST /api/dsh-skill-picker/skill-zh`，用的是你已配好的默认模型，不需要另外填 key。
+   - 翻译走宿主路由 `POST /api/dsh-skill-palette/skill-zh`，用的是你已配好的默认模型，不需要另外填 key。
    - 失败会在按钮旁写出原因（例如「没有默认模型：先去『设置 → 模型』选一个」）。
 
 ## 兼容
