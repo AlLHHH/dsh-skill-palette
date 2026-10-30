@@ -1,0 +1,4 @@
+# 把技能选择器挂进 profile：一行 insert 即可，宿主与客户端各半都在本包里。
+- insert:
+    - id: skill-picker
+      name: dsh-skill-palette

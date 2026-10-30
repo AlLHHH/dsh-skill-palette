@@ -1,0 +1,62 @@
+{
+  "name": "dsh-skill-palette",
+  "version": "0.1.0",
+  "description": "DSH 输入框旁的技能选择器（技能面板 / skill picker）：按「我要做什么」分类、最近使用、收藏、图钉连选，点击直接把 /技能名 插进输入框并变成蓝色 chip；没有中文说明的技能可以一键调用你的默认模型翻译。",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "skill",
+    "skills",
+    "skill-picker",
+    "技能",
+    "技能选择器",
+    "技能面板",
+    "技能分类",
+    "收藏",
+    "翻译"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "dsh": ">=0.2.0-0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-llm": ">=0.2.0-0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlLHHH/dsh-skill-palette"
+  },
+  "homepage": "https://github.com/AlLHHH/dsh-skill-palette",
+  "bugs": {
+    "url": "https://github.com/AlLHHH/dsh-skill-palette/issues"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  }
+}
