@@ -6,9 +6,11 @@ DSH 桌面端输入框旁边那颗「技能」按钮，单独做成一个插件�
 
 ![技能面板](docs/picker.png)
 
-![回答下方显示这一轮用到的技能](docs/turn-skills.png)
+![回答下方显示这一轮用到的技能，输入框旁是「技能」按钮](docs/turn-skills.png)
 
 ![设置页](docs/settings.png)
+
+> 示例图用的是示意图内容，不含任何真实会话。
 
 ## 功能
 
